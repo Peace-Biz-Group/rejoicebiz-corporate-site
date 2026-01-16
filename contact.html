@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | 株式会社リジョイス・ビズ</title>
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rejoice: {
+                            main: '#0d9488', // Teal-600
+                            accent: '#f59e0b', // Amber-500
+                            dark: '#111827', // Gray-900
+                            red: '#dc2626', // Red-600 (For accents)
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        eng: ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="index.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="bg-white flex flex-col min-h-screen header-dark">
+
+    <!-- Header -->
+    <header id="main-header" class="fixed w-full top-0 left-0 z-[70] transition-all duration-500 bg-gray-900 shadow-md">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="group nav-link flex items-center gap-3 relative z-50">
+                <img src="logo.png" alt="Rejoice Biz"
+                    class="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-md">
+                <span class="text-xl md:text-2xl font-bold tracking-tight nav-text text-white">Rejoice Biz</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 focus:outline-none z-50 text-white" aria-label="メニューを開く">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium tracking-wide text-sm">
+                <a href="index.html"
+                    class="nav-text text-white hover:opacity-70 transition-opacity flex flex-col items-center">
+                    <span class="text-xs font-bold mt-1">トップ</span>
+                </a>
+                <a href="company.html"
+                    class="nav-text text-white hover:opacity-70 transition-opacity flex flex-col items-center">
+                    <span class="text-xs font-bold mt-1">会社概要</span>
+                </a>
+                <div class="relative group">
+                    <button
+                        class="nav-text text-white hover:opacity-70 flex flex-col items-center focus:outline-none py-2">
+                        <span class="text-xs font-bold mt-1 inline-flex items-center gap-1">事業内容 <i
+                                data-lucide="chevron-down" class="w-3 h-3"></i></span>
+                    </button>
+                    <!-- Dropdown -->
+                    <div
+                        class="absolute left-1/2 transform -translate-x-1/2 mt-0 w-64 bg-white rounded-none shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border-t-4 border-rejoice-main">
+                        <a href="service-solar.html"
+                            class="block px-6 py-4 text-sm text-gray-600 hover:bg-gray-50 transition-colors border-b border-gray-100">
+                            太陽光・蓄電池
+                        </a>
+                        <a href="service-reform.html"
+                            class="block px-6 py-4 text-sm text-gray-600 hover:bg-gray-50 transition-colors border-b border-gray-100">
+                            住宅リフォーム
+                        </a>
+                        <a href="service-air.html"
+                            class="block px-6 py-4 text-sm text-gray-600 hover:bg-gray-50 transition-colors border-b border-gray-100">
+                            業務用エアコン
+                        </a>
+                        <a href="service-internet.html"
+                            class="block px-6 py-4 text-sm text-gray-600 hover:bg-gray-50 transition-colors">
+                            通信・新電力
+                        </a>
+                    </div>
+                </div>
+                <a href="works.html"
+                    class="nav-text text-white hover:opacity-70 transition-opacity flex flex-col items-center">
+                    <span class="text-xs font-bold mt-1">導入事例</span>
+                </a>
+                <a href="recruit.html"
+                    class="nav-text text-white hover:opacity-70 transition-opacity flex flex-col items-center">
+                    <span class="text-xs font-bold mt-1">採用</span>
+                </a>
+                <a href="contact.html"
+                    class="nav-link bg-red-600 text-white px-8 py-2 rounded-full hover:bg-red-700 transition-all transform hover:-translate-y-1 shadow-lg flex flex-col items-center leading-none">
+                    <span class="text-xs font-bold">お問い合わせ</span>
+                </a>
+            </nav>
+        </div>
+
+    </header>
+
+    <!-- Mobile Nav Menu Overlay -->
+    <div id="mobile-menu"
+        class="hidden md:hidden fixed inset-0 bg-white z-[60] flex flex-col pt-24 px-6 space-y-6 overflow-y-auto">
+        <a href="index.html"
+            class="mobile-link text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4 flex justify-between items-baseline">
+            <span>トップ</span>
+        </a>
+        <a href="company.html"
+            class="mobile-link text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4 flex justify-between items-baseline">
+            <span>会社概要</span>
+        </a>
+        <div class="space-y-4">
+            <span class="text-xs font-bold text-gray-900 tracking-widest uppercase">事業内容</span>
+            <a href="service-solar.html"
+                class="mobile-link block text-lg font-medium text-gray-600 pl-4 border-l-2 border-rejoice-main">太陽光・蓄電池</a>
+            <a href="service-reform.html"
+                class="mobile-link block text-lg font-medium text-gray-600 pl-4 border-l-2 border-rejoice-red">住宅リフォーム</a>
+            <a href="service-air.html"
+                class="mobile-link block text-lg font-medium text-gray-600 pl-4 border-l-2 border-blue-500">業務用エアコン</a>
+            <a href="service-internet.html"
+                class="mobile-link block text-lg font-medium text-gray-600 pl-4 border-l-2 border-purple-500">通信・新電力</a>
+        </div>
+        <a href="works.html"
+            class="mobile-link text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4 flex justify-between items-baseline">
+            <span>導入事例</span>
+        </a>
+        <a href="recruit.html"
+            class="mobile-link text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4 flex justify-between items-baseline">
+            <span>採用</span>
+        </a>
+        <a href="contact.html"
+            class="mobile-link block text-center bg-red-600 text-white py-4 rounded-full font-bold mt-8">
+            お問い合わせ
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-24"> <!-- Added pt-24 because header is fixed and dark -->
+
+        <!-- View 1: Input Form -->
+        <div id="view-input" class="form-view active">
+            <div class="bg-green-600 text-white py-20">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-bold">お問い合わせ</h2>
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 py-16 max-w-3xl">
+                <p class="mb-10 text-gray-600 text-center">
+                    以下のフォームに必要事項をご入力の上、送信してください。<br>
+                    担当者より折り返しご連絡させていただきます。
+                </p>
+
+                <form class="space-y-8 bg-white p-8 md:p-10 rounded-2xl shadow-lg border border-gray-100">
+                    <!-- Question Type -->
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-3">質問内容 <span
+                                class="text-red-500 text-xs ml-2">必須</span></label>
+                        <div class="space-y-2">
+                            <label
+                                class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" name="type" value="太陽光発電システム"
+                                    class="form-checkbox h-5 w-5 text-green-600 rounded">
+                                <span class="text-gray-700">太陽光発電システム</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" name="type" value="家庭用蓄電池"
+                                    class="form-checkbox h-5 w-5 text-green-600 rounded">
+                                <span class="text-gray-700">家庭用蓄電池</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" name="type" value="住宅リフォーム"
+                                    class="form-checkbox h-5 w-5 text-green-600 rounded">
+                                <span class="text-gray-700">住宅リフォーム</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" name="type" value="オール電化"
+                                    class="form-checkbox h-5 w-5 text-green-600 rounded">
+                                <span class="text-gray-700">オール電化</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" name="type" value="新電力サービス"
+                                    class="form-checkbox h-5 w-5 text-green-600 rounded">
+                                <span class="text-gray-700">新電力サービス</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" name="type" value="インターネット回線"
+                                    class="form-checkbox h-5 w-5 text-green-600 rounded">
+                                <span class="text-gray-700">インターネット回線</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" name="type" value="その他"
+                                    class="form-checkbox h-5 w-5 text-green-600 rounded">
+                                <span class="text-gray-700">その他</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Name -->
+                    <div>
+                        <label for="name" class="block text-gray-700 font-bold mb-2">お名前 <span
+                                class="text-red-500 text-xs ml-2">必須</span></label>
+                        <input type="text" id="name" name="名前"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"
+                            placeholder="例：山田 太郎">
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <label for="phone" class="block text-gray-700 font-bold mb-2">連絡先電話番号 <span
+                                class="text-red-500 text-xs ml-2">必須</span></label>
+                        <input type="tel" id="phone" name="電話番号"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"
+                            placeholder="例：090-1234-5678">
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-gray-700 font-bold mb-2">メールアドレス <span
+                                class="text-red-500 text-xs ml-2">必須</span></label>
+                        <input type="email" id="email" name="メールアドレス"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"
+                            placeholder="例：info@example.com">
+                    </div>
+
+                    <!-- Address -->
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">住所 <span
+                                class="text-gray-400 text-xs ml-2">任意</span></label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="col-span-1">
+                                <input type="text" id="zip" name="郵便番号"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"
+                                    placeholder="郵便番号">
+                            </div>
+                            <div class="md:col-span-2">
+                                <input type="text" id="address1" name="住所1"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"
+                                    placeholder="都道府県・市区町村・番地">
+                            </div>
+                        </div>
+                        <input type="text" id="address2" name="住所2"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"
+                            placeholder="建物名・部屋番号">
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label for="message" class="block text-gray-700 font-bold mb-2">お問い合わせ内容 <span
+                                class="text-red-500 text-xs ml-2">必須</span></label>
+                        <textarea id="message" name="お問い合わせ内容" rows="5"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"
+                            placeholder="ご質問やご相談内容をご記入ください"></textarea>
+                    </div>
+
+                    <!-- Agreement Checkbox -->
+                    <div class="flex items-center">
+                        <input type="checkbox" id="agree" name="agree"
+                            class="form-checkbox h-5 w-5 text-green-600 rounded">
+                        <label for="agree" class="ml-2 text-gray-700">
+                            <a href="privacy-policy.html" target="_blank"
+                                class="text-green-600 hover:underline">個人情報保護方針</a>に同意する <span
+                                class="text-red-500 text-xs ml-2">必須</span>
+                        </label>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="button" id="btn-confirm"
+                            class="px-10 py-4 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 w-full md:w-auto">
+                            入力内容を確認する
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- View 2: Confirm View -->
+        <div id="view-confirm" class="form-view">
+            <div class="bg-green-600 text-white py-20">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-bold">送信内容確認</h2>
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 py-16 max-w-3xl">
+                <p class="mb-10 text-gray-600 text-center">
+                    以下の内容で送信します。よろしければ「送信する」ボタンを押してください。<br>
+                    修正する場合は「戻る」ボタンで入力画面にお戻りください。
+                </p>
+
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-lg border border-gray-100 space-y-6">
+                    <dl class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b pb-4">
+                        <dt class="font-bold text-gray-700">質問内容</dt>
+                        <dd class="md:col-span-2 text-gray-900" id="confirm-type"></dd>
+                    </dl>
+                    <dl class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b pb-4">
+                        <dt class="font-bold text-gray-700">お名前</dt>
+                        <dd class="md:col-span-2 text-gray-900" id="confirm-name"></dd>
+                    </dl>
+                    <dl class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b pb-4">
+                        <dt class="font-bold text-gray-700">電話番号</dt>
+                        <dd class="md:col-span-2 text-gray-900" id="confirm-phone"></dd>
+                    </dl>
+                    <dl class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b pb-4">
+                        <dt class="font-bold text-gray-700">メールアドレス</dt>
+                        <dd class="md:col-span-2 text-gray-900" id="confirm-email"></dd>
+                    </dl>
+                    <dl class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b pb-4">
+                        <dt class="font-bold text-gray-700">住所</dt>
+                        <dd class="md:col-span-2 text-gray-900" id="confirm-address"></dd>
+                    </dl>
+                    <dl class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <dt class="font-bold text-gray-700">お問い合わせ内容</dt>
+                        <dd class="md:col-span-2 text-gray-900 whitespace-pre-wrap" id="confirm-message"></dd>
+                    </dl>
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-center gap-4 mt-10">
+                    <button type="button" id="btn-back"
+                        class="px-10 py-4 bg-gray-500 text-white font-bold rounded-lg hover:bg-gray-600 shadow transition-all w-full md:w-auto">
+                        戻る
+                    </button>
+                    <button type="button" id="btn-submit"
+                        class="px-10 py-4 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 w-full md:w-auto">
+                        送信する
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- View 3: Complete View -->
+        <div id="view-complete" class="form-view">
+            <div class="bg-green-600 text-white py-20">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-bold">送信完了</h2>
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 py-20 max-w-3xl text-center">
+                <div class="mb-8">
+                    <i data-lucide="check-circle" class="w-24 h-24 text-green-500 mx-auto"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">お問い合わせありがとうございます。</h3>
+                <p class="text-gray-600 leading-relaxed mb-12">
+                    ご入力いただいた内容は無事送信されました。<br>
+                    担当者より通常2〜3営業日以内にご連絡させていただきます。<br>
+                    万が一ご連絡がない場合は、お手数ですがお電話にてお問い合わせください。
+                </p>
+                <a href="index.html"
+                    class="nav-link px-10 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 shadow-lg transition-all">
+                    トップページへ戻る
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 text-gray-600 py-16 border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-3">
+                        <img src="logo.png" alt="Rejoice Biz Logo"
+                            class="h-10 w-auto object-contain brightness-0 opacity-80">
+                        <span class="text-xl font-bold tracking-tight text-gray-800">Rejoice Biz</span>
+                    </div>
+                    <p class="text-sm leading-relaxed">
+                        株式会社リジョイス・ビズ<br>
+                        〒812-0029 福岡県福岡市博多区古門戸町1-10<br>
+                        NTF博多ビル5F
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-x-8 gap-y-4 text-sm font-medium tracking-wide">
+                    <a href="index.html" class="flex flex-col hover:text-rejoice-main transition-colors">
+                        <span>トップ</span>
+                    </a>
+                    <a href="company.html" class="flex flex-col hover:text-rejoice-main transition-colors">
+                        <span>会社概要</span>
+                    </a>
+                    <a href="service-solar.html" class="flex flex-col hover:text-rejoice-main transition-colors">
+                        <span>太陽光・蓄電池</span>
+                    </a>
+                    <a href="service-reform.html" class="flex flex-col hover:text-rejoice-main transition-colors">
+                        <span>住宅リフォーム</span>
+                    </a>
+                    <a href="service-air.html" class="flex flex-col hover:text-rejoice-main transition-colors">
+                        <span>業務用エアコン</span>
+                    </a>
+                    <a href="service-internet.html" class="flex flex-col hover:text-rejoice-main transition-colors">
+                        <span>通信・新電力</span>
+                    </a>
+                    <a href="works.html" class="flex flex-col hover:text-rejoice-main transition-colors">
+                        <span>導入事例</span>
+                    </a>
+                    <a href="recruit.html" class="flex flex-col hover:text-rejoice-main transition-colors">
+                        <span>採用</span>
+                    </a>
+                    <a href="contact.html" class="flex flex-col hover:text-rejoice-main transition-colors">
+                        <span>お問い合わせ</span>
+                    </a>
+                </div>
+            </div>
+            <div
+                class="mt-16 pt-8 border-t border-gray-200 text-center text-xs text-gray-400 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; Rejoice Biz Co., Ltd. All Rights Reserved.</p>
+                <div class="flex gap-6">
+                    <a href="privacy-policy.html" class="hover:text-gray-600">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+
+            // Mobile Menu
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuBtn && mobileMenu) {
+                const toggleMenu = () => {
+                    mobileMenu.classList.toggle('hidden');
+                    const isOpen = !mobileMenu.classList.contains('hidden');
+                    menuBtn.innerHTML = isOpen
+                        ? '<i data-lucide="x" class="w-8 h-8 text-gray-800"></i>'
+                        : '<i data-lucide="menu" class="w-8 h-8"></i>';
+                    lucide.createIcons();
+                    document.body.style.overflow = isOpen ? 'hidden' : '';
+                };
+
+                menuBtn.addEventListener('click', toggleMenu);
+
+                // Close menu when clicking links
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            toggleMenu();
+                        }
+                    });
+                });
+            }
+
+            // --- Contact Form Logic ---
+            const viewInput = document.getElementById('view-input');
+            const viewConfirm = document.getElementById('view-confirm');
+            const viewComplete = document.getElementById('view-complete');
+
+            const showView = (viewId) => {
+                [viewInput, viewConfirm, viewComplete].forEach(el => el.classList.remove('active'));
+                document.getElementById(viewId).classList.add('active');
+                window.scrollTo(0, 0);
+            };
+
+            // URL Params for Pre-selection
+            const params = new URLSearchParams(window.location.search);
+            const typeParam = params.get('type');
+            if (typeParam) {
+                const typeMapping = {
+                    'solar': '太陽光発電システム',
+                    'battery': '家庭用蓄電池',
+                    'reform': '住宅リフォーム',
+                    'all_electric': 'オール電化',
+                    'power': '新電力サービス',
+                    'internet': 'インターネット回線',
+                    'other': 'その他'
+                };
+                const targetValue = typeMapping[typeParam];
+                if (targetValue) {
+                    const checkboxes = document.querySelectorAll('input[name="type"]');
+                    checkboxes.forEach(cb => {
+                        if (cb.value === targetValue) cb.checked = true;
+                    });
+                }
+            }
+
+            // Button Events
+            const btnConfirm = document.getElementById('btn-confirm');
+            const btnBack = document.getElementById('btn-back');
+            const btnSubmit = document.getElementById('btn-submit');
+
+            if (btnConfirm) {
+                btnConfirm.addEventListener('click', () => {
+                    // Validation
+                    const types = document.querySelectorAll('input[name="type"]:checked');
+                    const name = document.getElementById('name').value;
+                    const phone = document.getElementById('phone').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    const agree = document.getElementById('agree').checked;
+
+                    if (types.length === 0) return alert('質問内容を選択してください。');
+                    if (!name) return alert('お名前を入力してください。');
+                    if (!phone) return alert('電話番号を入力してください。');
+                    if (!email) return alert('メールアドレスを入力してください。');
+                    if (!message) return alert('お問い合わせ内容を入力してください。');
+                    if (!agree) return alert('個人情報保護方針への同意が必要です。');
+
+                    // Set Confirm Data
+                    const typeLabels = [];
+                    types.forEach(cb => typeLabels.push(cb.value));
+                    document.getElementById('confirm-type').textContent = typeLabels.join('、');
+                    document.getElementById('confirm-name').textContent = name;
+                    document.getElementById('confirm-phone').textContent = phone;
+                    document.getElementById('confirm-email').textContent = email;
+
+                    const zip = document.getElementById('zip').value;
+                    const addr1 = document.getElementById('address1').value;
+                    const addr2 = document.getElementById('address2').value;
+                    let fullAddress = "";
+                    if (zip) fullAddress += "〒" + zip + " ";
+                    if (addr1) fullAddress += addr1 + " ";
+                    if (addr2) fullAddress += addr2;
+                    document.getElementById('confirm-address').textContent = fullAddress || '(未入力)';
+                    document.getElementById('confirm-message').textContent = message;
+
+                    showView('view-confirm');
+                });
+            }
+
+            if (btnBack) {
+                btnBack.addEventListener('click', () => {
+                    showView('view-input');
+                });
+            }
+
+            if (btnSubmit) {
+                btnSubmit.addEventListener('click', () => {
+                    // Simulate Submission
+                    showView('view-complete');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,406 @@
+/* Global Styles */
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #1A202C;
+    /* Dark Navy */
+    letter-spacing: 0.05em;
+    /* Removed global background-color to allow pages to set their own */
+}
+
+/* Typography Utils */
+.font-eng {
+    font-family: 'Outfit', sans-serif;
+}
+
+.font-serif {
+    font-family: 'Noto Serif JP', serif;
+}
+
+/* Colors & Gradients */
+.text-gradient-green {
+    background: linear-gradient(135deg, #42E695, #3BB2B8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #3BB2B8;
+}
+
+.bg-gradient-green {
+    background: linear-gradient(135deg, #42E695, #3BB2B8);
+}
+
+.text-gold {
+    background: linear-gradient(135deg, #D4AF37, #F2D06B, #D4AF37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #D4AF37;
+}
+
+/* Royal Blue Gradient for Contact */
+.bg-gradient-royal {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    /* Deep Blue/Dark Teal Mix */
+}
+
+/* Deep Blue Gradient (Alternative) */
+.bg-gradient-deep-blue {
+    background: linear-gradient(135deg, #000428, #004e92);
+}
+
+/* Text Shadows */
+.text-shadow-hero {
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Header Styles */
+#main-header {
+    transition: all 0.4s ease;
+}
+
+/* Scrolled State: White Glass (Applies to Home Header) */
+.home-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.home-header.scrolled .nav-text {
+    color: #1A202C;
+    text-shadow: none;
+}
+
+.home-header.scrolled #mobile-menu-btn {
+    color: #1A202C;
+}
+
+/* Default Header: Transparent (ONLY for Home Header) */
+.home-header:not(.scrolled) {
+    background-color: transparent;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.home-header:not(.scrolled) .nav-text {
+    color: #FFFFFF;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.home-header:not(.scrolled) #mobile-menu-btn {
+    color: #FFFFFF;
+}
+
+/* Generalized Luxury Header (For Subpages) */
+.header-luxury {
+    transition: all 0.4s ease;
+}
+
+.header-luxury:not(.scrolled) {
+    background-color: transparent;
+    padding-top: 25px;
+    /* Slightly tighter than home */
+    padding-bottom: 25px;
+}
+
+.header-luxury:not(.scrolled) .nav-text {
+    color: #FFFFFF;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.header-luxury:not(.scrolled) #mobile-menu-btn {
+    color: #FFFFFF;
+}
+
+/* Scrolled State for both Home and Luxury */
+.home-header.scrolled,
+.header-luxury.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.home-header.scrolled .nav-text,
+.header-luxury.scrolled .nav-text {
+    color: #1A202C !important;
+    text-shadow: none;
+}
+
+.home-header.scrolled #mobile-menu-btn,
+.header-luxury.scrolled #mobile-menu-btn {
+    color: #1A202C;
+}
+
+/* Layout Utilities */
+.section-padding {
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.container-custom {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Animations */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}
+
+/* Service Card Hover Effect */
+.service-card-hover {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-bottom: 4px solid transparent;
+    /* Prepare for border transition */
+}
+
+.service-card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Border Colors */
+.hover-border-red:hover {
+    border-bottom-color: #dc2626;
+}
+
+.hover-border-blue:hover {
+    border-bottom-color: #3b82f6;
+}
+
+.hover-border-purple:hover {
+    border-bottom-color: #a855f7;
+}
+
+/* News List Item Hover */
+.news-item-hover {
+    transition: background-color 0.3s ease;
+}
+
+.news-item-hover:hover {
+    background-color: #F9FAFB;
+}
+
+/* Contact Button Glow */
+.btn-glow {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+    transform: scale(1.02);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .section-padding {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+}
+
+/* Contact Form Views (Restored) */
+.form-view {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero & Image Slow Zoom Animation */
+.hero-scale {
+    animation: slowZoom 20s linear infinite alternate;
+}
+
+@keyframes slowZoom {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+/* --- Subpage Common Styles --- */
+
+/* Page Header */
+.page-header {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    margin-top: 0;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    /* Slight darken for text readability */
+}
+
+.page-title {
+    position: relative;
+    z-index: 10;
+    color: #FFFFFF;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.1em;
+}
+
+/* Content Area */
+.content-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #FFFFFF;
+}
+
+.content-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    line-height: 1.9;
+    color: #374151;
+    /* Gray-700 */
+}
+
+/* Headings */
+.heading-luxury {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2rem;
+    color: #1A202C;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #E5E7EB;
+    position: relative;
+}
+
+.heading-luxury::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #42E695, #3BB2B8);
+    /* Green gradient */
+}
+
+/* Luxury Table */
+.luxury-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.luxury-table th,
+.luxury-table td {
+    padding: 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.luxury-table th {
+    width: 30%;
+    font-weight: bold;
+    color: #1A202C;
+    background-color: #F9FAFB;
+    font-family: 'Noto Serif JP', serif;
+}
+
+.luxury-table td {
+    color: #4B5563;
+}
+
+/* Footer CTA (Deep Blue) */
+.footer-cta {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    /* Royal Blue */
+    color: #FFFFFF;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-cta h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .page-header {
+        height: 300px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .luxury-table th,
+    .luxury-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .luxury-table th {
+        border-bottom: none;
+        padding-bottom: 0.5rem;
+        background: none;
+    }
+
+    .luxury-table td {
+        padding-top: 0.5rem;
+        padding-left: 1.5rem;
+    }
+}
