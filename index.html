@@ -94,12 +94,13 @@
 
     <!-- Header (Minimalist) -->
     <header id="main-header"
-        class="fixed w-full top-0 left-0 z-[70] transition-all duration-500 border-b border-white/10 mix-blend-difference text-white">
+        class="fixed w-full top-0 left-0 z-[70] transition-all duration-500 border-b border-white/10 text-white">
         <div class="container mx-auto px-6 h-24 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3 z-50">
                 <img src="assets/images/logo.png" alt="Rejoice Biz"
-                    class="h-10 w-auto object-contain brightness-0 invert">
-                <span class="font-eng font-bold text-2xl tracking-tighter">REJOICE BIZ</span>
+                    class="h-10 w-auto object-contain brightness-0 invert transition-all duration-500">
+                <span class="font-eng font-bold text-2xl tracking-tighter transition-colors duration-500">REJOICE
+                    BIZ</span>
             </a>
 
             <!-- Desktop Nav -->
@@ -121,7 +122,7 @@
             </nav>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="lg:hidden z-50">
+            <button id="mobile-menu-btn" class="lg:hidden z-50 transition-colors duration-500">
                 <i data-lucide="menu" class="w-8 h-8"></i>
             </button>
         </div>
@@ -299,7 +300,7 @@
                     <!-- Reform (Light Theme) -->
                     <a href="service-reform.html"
                         class="col-span-1 relative h-[300px] border-r border-b border-gray-200 group overflow-hidden">
-                        <img src="assets/images/jutaku.webp"
+                        <img src="assets/images/jutaku.png"
                             class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:scale-105 transition-transform duration-700">
                         <div
                             class="absolute inset-0 bg-white/80 group-hover:bg-white/60 transition-colors duration-300">
@@ -486,22 +487,35 @@
                 menuBtn.addEventListener('click', () => {
                     mobileMenu.classList.toggle('hidden');
                     const isOpen = !mobileMenu.classList.contains('hidden');
+                    const isScrolled = window.scrollY > 50;
+                    const iconColor = isOpen ? 'text-black' : (isScrolled ? 'text-black' : 'text-white');
                     menuBtn.innerHTML = isOpen
-                        ? '<i data-lucide="x" class="w-8 h-8 text-black"></i>'
-                        : '<i data-lucide="menu" class="w-8 h-8 text-white mix-blend-difference"></i>';
+                        ? `<i data-lucide="x" class="w-8 h-8 ${iconColor}"></i>`
+                        : `<i data-lucide="menu" class="w-8 h-8 ${iconColor}"></i>`;
                     lucide.createIcons();
                 });
             }
 
             // Scroll Header Effect
             const header = document.getElementById('main-header');
+            const logo = header.querySelector('img');
+            const brandText = header.querySelector('.font-eng');
+
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     header.classList.add('bg-white/90', 'backdrop-blur', 'text-black', 'border-gray-200');
-                    header.classList.remove('text-white', 'border-white/10', 'mix-blend-difference');
+                    header.classList.remove('text-white', 'border-white/10');
+                    // Update logo and text colors for scrolled state
+                    logo.classList.remove('brightness-0', 'invert');
+                    brandText.classList.add('text-black');
+                    brandText.classList.remove('text-white');
                 } else {
                     header.classList.remove('bg-white/90', 'backdrop-blur', 'text-black', 'border-gray-200');
-                    header.classList.add('text-white', 'border-white/10', 'mix-blend-difference');
+                    header.classList.add('text-white', 'border-white/10');
+                    // Update logo and text colors for transparent state
+                    logo.classList.add('brightness-0', 'invert');
+                    brandText.classList.remove('text-black');
+                    brandText.classList.add('text-white');
                 }
             });
 
